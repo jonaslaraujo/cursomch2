@@ -3,6 +3,8 @@ package br.com.jonasaraujo.cursomc.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -11,6 +13,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.com.jonasaraujo.cursomc.domain.Categoria;
+import br.com.jonasaraujo.cursomc.dto.CategoriaDTO;
 import br.com.jonasaraujo.cursomc.repositories.CategoriaRepository;
 import br.com.jonasaraujo.cursomc.services.exceptions.DataIntegrityException;
 import br.com.jonasaraujo.cursomc.services.exceptions.ObjectNotFoundException;
@@ -28,7 +31,7 @@ public class CategoriaService {
 		}
 	
 	
-	public Categoria insert(Categoria obj) {
+	public Categoria insert(@Valid Categoria obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
@@ -57,5 +60,9 @@ public class CategoriaService {
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
 	}
 }
