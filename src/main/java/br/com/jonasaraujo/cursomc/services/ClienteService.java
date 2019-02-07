@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jonasaraujo.cursomc.domain.Cidade;
 import br.com.jonasaraujo.cursomc.domain.Cliente;
@@ -32,6 +33,7 @@ public class ClienteService {
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 	
+	@Transactional
 	public Cliente insert(@Valid Cliente obj) {
 		obj.setId(null);
 		obj = repo.save(obj);
