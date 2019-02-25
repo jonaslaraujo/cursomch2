@@ -6,10 +6,12 @@ import java.util.Locale;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name="JonasItemPedido")
 public class ItemPedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -1,6 +1,7 @@
 package br.com.jonasaraujo.cursomc.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -8,6 +9,7 @@ import br.com.jonasaraujo.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
 @JsonTypeName("pagamentoComCartao")
+@Table(name="JonasPagamentoComCartao")
 public class PagamentoComCartao extends Pagamento{
 	private static final long serialVersionUID = 1L;
 	

@@ -14,15 +14,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name="JonasProduto")
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Integer id;
 	private String nome;
 	private Double preco;
@@ -33,6 +35,7 @@ public class Produto implements Serializable {
 			joinColumns = @JoinColumn(name = "produto_id"),
 			inverseJoinColumns = @JoinColumn(name = "categoria_id")
 			)
+	
 	private List<Categoria> categorias = new ArrayList<>();
 	
 	@JsonIgnore

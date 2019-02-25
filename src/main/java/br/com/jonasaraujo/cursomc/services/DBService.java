@@ -52,9 +52,10 @@ public class DBService {
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
 
+	
 	public void instantiateTestDatabase() throws ParseException {
-
-		Categoria cat1 = new Categoria(null, "Informática");
+		
+    	Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");
 		Categoria cat3 = new Categoria(null, "Cama mesa e banho");
 		Categoria cat4 = new Categoria(null, "Eletrônicos");
@@ -110,7 +111,7 @@ public class DBService {
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
 
-		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "36378912377", TipoCliente.PESSOAFISICA);
+		Cliente cli1 = new Cliente(null, "Maria Silva", "jonas.araujo@mps.com.br", "36378912377", TipoCliente.PESSOAFISICA);
 
 		cli1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
 

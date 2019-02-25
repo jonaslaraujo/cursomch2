@@ -14,17 +14,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.jonasaraujo.cursomc.domain.enums.TipoCliente;
 
 @Entity
+@Table(name="JonasCliente")
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Integer id;
 	private String nome;
 	private String email;
